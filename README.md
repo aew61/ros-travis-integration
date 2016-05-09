@@ -11,6 +11,8 @@ how to correctly handle dependencies (system and source).
 
 [![Build Status](https://travis-ci.org/aew61/ros-travis-integration.svg?branch=master)](https://travis-ci.org/aew61/ros-travis-integration)
 
+[![Stories in Ready](https://badge.waffle.io/aew61/ros-travis-integration.svg?label=ready&title=Ready)](http://waffle.io/aew61/ros-travis-integration)
+
 # Installation instructions
 
 To enable Travis continuous integration for your ROS package, first copy these
