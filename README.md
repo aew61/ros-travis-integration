@@ -11,6 +11,8 @@ how to correctly handle dependencies (system and source).
 
 [![Build Status](https://travis-ci.org/aew61/ros-travis-integration.svg?branch=master)](https://travis-ci.org/aew61/ros-travis-integration)
 
+Waffle link is below (click the badge):
+
 [![Stories in Ready](https://badge.waffle.io/aew61/ros-travis-integration.svg?label=ready&title=Ready)](http://waffle.io/aew61/ros-travis-integration)
 
 # Installation instructions
@@ -30,7 +32,7 @@ Then, log on to travis-ci and turn on continuous integration for the repository:
 From then on, any push to this repository will trigger a new Travis-ci build.
 
 # About Travis-CI
-
+ 
 Travis provides a clean virtual machine for each build. The .travis.yml script
 installs ROS, creates a workspace, resolves all given dependencies, and sets
 environment variables (devel/setup.bash). Then, it compiles the entire ROS
