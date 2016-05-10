@@ -15,6 +15,10 @@ Waffle link is below (click the badge):
 
 [![Stories in Ready](https://badge.waffle.io/aew61/ros-travis-integration.svg?label=ready&title=Ready)](http://waffle.io/aew61/ros-travis-integration)
 
+Coveralls code coverage server badge is below (click the badge):
+
+[![Coverage Status](https://coveralls.io/repos/github/aew61/ros-travis-integration/badge.svg?branch=master)](https://coveralls.io/github/aew61/ros-travis-integration?branch=master)
+
 # Installation instructions
 
 To enable Travis continuous integration for your ROS package, first copy these
