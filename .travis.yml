@@ -72,6 +72,7 @@ before_install:
   # Prepare rosdep to install dependencies.
   - sudo rosdep init
   - rosdep update
+  - pip install --user cpp-coveralls
 
 # Create a catkin workspace with the package under integration.
 install:
@@ -109,7 +110,9 @@ before_script:
 # returns non-zero when a test fails (which notifies Travis the build
 # failed). This is why we run both.
 script:
+  - ./configure --enable-gcov && make && make check
   - source /opt/ros/$ROS_DISTRO/setup.bash
   - cd ~/catkin_ws
   - catkin_make $( [ -f $CATKIN_OPTIONS ] && cat $CATKIN_OPTIONS ) && catkin_make run_tests && catkin_make test
-
+after_success:
+  - coveralls --exclude lib --exclude tests --gvoc-options '\-lp'
