@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(ros_pkg_with_tests)
 
+
 ## Find catkin macros and libraries
 find_package(catkin REQUIRED
   roscpp
@@ -10,6 +11,21 @@ find_package(catkin REQUIRED
 ## catkin specific configuration ##
 ###################################
 catkin_package(
+)
+
+
+#############################
+## Coveralls configuration ##
+#############################
+set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/../coveralls-cmake/cmake )
+
+include(Coveralls)
+coveralls_turn_on_coverage()
+set( COVERAGE_SRCS ${PROJECT_SOURCE_DIR}/src/square.cpp )
+coveralls_setup(
+    "${COVERAGE_SRCS}"                          # the source files
+    ON                                          # upload coverage
+    "${PROJECT_SOURCE_DIR}/../coveralls-cmake/cmake"    # path to project cmake modules
 )
 
 ###########

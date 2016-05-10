@@ -72,10 +72,11 @@ before_install:
   # Prepare rosdep to install dependencies.
   - sudo rosdep init
   - rosdep update
-  - pip install --user cpp-coveralls
 
 # Create a catkin workspace with the package under integration.
 install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y -qq lcov curl
   - mkdir -p ~/catkin_ws/src
   - cd ~/catkin_ws/src
   - catkin_init_workspace
@@ -110,9 +111,7 @@ before_script:
 # returns non-zero when a test fails (which notifies Travis the build
 # failed). This is why we run both.
 script:
-  - ./configure --enable-gcov && make && make check
+  - export COVERALLS_SERVICE_NAME=travis-ci
   - source /opt/ros/$ROS_DISTRO/setup.bash
   - cd ~/catkin_ws
-  - catkin_make $( [ -f $CATKIN_OPTIONS ] && cat $CATKIN_OPTIONS ) && catkin_make run_tests && catkin_make test
-after_success:
-  - coveralls --exclude lib --exclude tests --gvoc-options '\-lp'
+  - catkin_make $( [ -f $CATKIN_OPTIONS ] && cat $CATKIN_OPTIONS ) && catkin_make coveralls && catkin_make run_tests && catkin_make test
